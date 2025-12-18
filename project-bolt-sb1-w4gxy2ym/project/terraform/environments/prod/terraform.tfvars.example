@@ -1,0 +1,66 @@
+# AWS Configuration
+aws_region   = "us-east-1"
+environment  = "prod"
+project_name = "myapp"
+
+# Network Configuration
+vpc_id     = "vpc-xxxxxxxxxxxxx"
+subnet_ids = ["subnet-xxxxxxxxxxxxx", "subnet-yyyyyyyyyyyyy", "subnet-zzzzzzzzzzzzz"]
+
+# Security Configuration
+allowed_cidr_blocks     = ["10.0.0.0/8"]
+allowed_security_groups = ["sg-xxxxxxxxxxxxx"]
+
+# Database Configuration
+database_name   = "myapp_prod"
+master_username = "dbadmin"
+master_password = "ChangeMe!ComplexPassword123"
+
+# Instance Configuration
+writer_instance_class = "db.r6g.large"
+reader_instance_class = "db.r6g.large"
+reader_count          = 2
+
+# Backup Configuration
+backup_retention_period      = 30
+preferred_backup_window      = "03:00-04:00"
+preferred_maintenance_window = "sun:04:00-sun:05:00"
+
+# Security and Protection
+deletion_protection = true
+skip_final_snapshot = false
+
+# Monitoring Configuration
+performance_insights_enabled          = true
+performance_insights_retention_period = 7
+enhanced_monitoring_interval          = 60
+enabled_cloudwatch_logs_exports       = ["postgresql"]
+
+# Alarm Notification Configuration
+alarm_email_addresses = [
+  "ops-team@example.com",
+  "dba-team@example.com"
+]
+
+# Optional: SMS notifications
+alarm_phone_numbers = []
+
+# Alarm Thresholds
+cpu_threshold           = 80
+connections_threshold   = 100
+replica_lag_threshold   = 1000
+read_latency_threshold  = 20
+write_latency_threshold = 20
+memory_threshold        = 1073741824
+storage_threshold       = 10737418240
+deadlock_threshold      = 5
+
+# Database Parameters (optional)
+cluster_parameters = [
+  {
+    name  = "shared_preload_libraries"
+    value = "pg_stat_statements"
+  }
+]
+
+instance_parameters = []
